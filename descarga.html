@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Juego - Diabla Zoom</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: white;
+      font-family: sans-serif;
+    }
+
+    .zoom-container {
+      animation: zoomEffect 5s infinite alternate ease-in-out;
+    }
+
+    @keyframes zoomEffect {
+      from { transform: scale(1); }
+      to { transform: scale(1.1); }
+    }
+
+    img {
+      max-height: 70vh;
+    }
+
+    .boton-juego {
+      margin-top: 20px;
+      background-color: #e60073;
+      color: white;
+      padding: 15px 30px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 18px;
+      transition: background-color 0.3s ease;
+    }
+
+    .boton-juego:hover {
+      background-color: #ff3399;
+    }
+  </style>
+</head>
+<body>
+  <div class="zoom-container">
+    <img src="diabla.png" alt="Diabla con Zoom">
+  </div>
+  <a id="link-juego" class="boton-juego" href="#" target="_blank">Descargar juego</a>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const url = params.get("url");
+
+    const boton = document.getElementById("link-juego");
+    if (url) {
+      boton.href = url;
+    } else {
+      boton.textContent = "Enlace no disponible";
+      boton.style.pointerEvents = "none";
+      boton.style.opacity = "0.5";
+    }
+  </script>
+</body>
+</html>
